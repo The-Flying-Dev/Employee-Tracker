@@ -24,5 +24,26 @@ class Work < ApplicationRecord
 
   belongs_to :user 
   belongs_to :project
-  
+
+  validates :project, presence: true 
+  validates :user, presence: true 
+  validates :datetimeperformed, presence: true
+  validate :future_date
+  validates :hours, numericality: { only_integer: true, greater_than: 0, less_than_or_equal_to: 8 }
+
+  #returns items greater than or equl to 8
+  scope :fullday, -> { where("hours >= 8") }
+
+  #returns items where work was performed no less than 7 days ago
+  scope :recentwork, -> { where("datetimeperformed > '#{Time.now - 7.days}'") }
+
+
+  # if a datetimeperformed item exists, make sure it's not greater than the current time
+  def future_date 
+    if datetimeperformed.present? && datetimeperformed > Time.now 
+      errors.add(:datetimeperformed, "can't be a future date")
+    end
+  end
+
+
 end

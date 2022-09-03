@@ -21,6 +21,8 @@
 #  user_id     (user_id => users.id)
 #
 class Work < ApplicationRecord
+
   belongs_to :user 
   belongs_to :project
+  
 end

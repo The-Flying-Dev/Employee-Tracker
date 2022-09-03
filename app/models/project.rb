@@ -18,6 +18,12 @@
 #  department_id  (department_id => departments.id)
 #
 class Project < ApplicationRecord
+
   belongs_to :department
   has_many :works
+  has_many :users, through: :works  # many-to-many connection with users, INNER JOIN
+
+  validates :name, length: { minimum: 5 } 
+  
+
 end

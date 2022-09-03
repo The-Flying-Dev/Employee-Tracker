@@ -13,4 +13,5 @@ class Department < ApplicationRecord
   has_many :projects
 
   validates :name, length: { minimum: 5 }
+  
 end

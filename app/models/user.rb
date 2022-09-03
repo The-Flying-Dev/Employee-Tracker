@@ -18,6 +18,9 @@
 #  department_id  (department_id => departments.id)
 #
 class User < ApplicationRecord
+
   belongs_to :department
   has_many :works
+  has_many :projects, through: :works  # many-to-many connection with projects, INNER JOIN
+
 end

@@ -2,20 +2,20 @@
 #
 # Table name: projects
 #
-#  id         :integer          not null, primary key
-#  name       :string
-#  rate       :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  company_id :integer
+#  id            :integer          not null, primary key
+#  name          :string
+#  rate          :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  department_id :integer
 #
 # Indexes
 #
-#  index_projects_on_company_id  (company_id)
+#  index_projects_on_department_id  (department_id)
 #
 # Foreign Keys
 #
-#  company_id  (company_id => companies.id)
+#  department_id  (department_id => departments.id)
 #
 
 # This model initially had no columns defined. If you add columns to the

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_03_023939) do
+ActiveRecord::Schema.define(version: 2022_09_03_025002) do
 
   create_table "departments", force: :cascade do |t|
     t.string "name", null: false
@@ -20,11 +20,11 @@ ActiveRecord::Schema.define(version: 2022_09_03_023939) do
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
-    t.integer "company_id"
+    t.integer "department_id"
     t.integer "rate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["company_id"], name: "index_projects_on_company_id"
+    t.index ["department_id"], name: "index_projects_on_department_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -36,6 +36,19 @@ ActiveRecord::Schema.define(version: 2022_09_03_023939) do
     t.index ["department_id"], name: "index_users_on_department_id"
   end
 
-  add_foreign_key "projects", "companies"
+  create_table "works", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "project_id"
+    t.datetime "datetimeperformed"
+    t.integer "hours"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_works_on_project_id"
+    t.index ["user_id"], name: "index_works_on_user_id"
+  end
+
+  add_foreign_key "projects", "departments"
   add_foreign_key "users", "departments"
+  add_foreign_key "works", "projects"
+  add_foreign_key "works", "users"
 end

@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id            :integer          not null, primary key
+#  fname         :string
+#  lname         :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  department_id :integer
+#
+# Indexes
+#
+#  index_users_on_department_id  (department_id)
+#
+# Foreign Keys
+#
+#  department_id  (department_id => departments.id)
+#
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value

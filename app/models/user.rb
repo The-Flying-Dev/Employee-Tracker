@@ -18,4 +18,6 @@
 #  department_id  (department_id => departments.id)
 #
 class User < ApplicationRecord
+  belongs_to :department
+  has_many :works
 end

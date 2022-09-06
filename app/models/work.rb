@@ -38,7 +38,8 @@ class Work < ApplicationRecord
   scope :recentwork, -> { where("datetimeperformed > '#{Time.now - 7.days}'") }
 
 
-  # if a datetimeperformed item exists, make sure it's not greater than the current time
+  # Custom validation
+  # if a datetimeperformed item exists, make sure it's NOT greater than the current time
   def future_date 
     if datetimeperformed.present? && datetimeperformed > Time.now 
       errors.add(:datetimeperformed, "can't be a future date")

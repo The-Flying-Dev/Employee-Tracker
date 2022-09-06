@@ -34,5 +34,9 @@ class Project < ApplicationRecord
   #returns items where rate is less than 200
   scope :lowrate, -> { where("rate < 200") }
   
-
+  # converting an Active Record object to a string
+  def to_s 
+    "#{name} (#{department})"
+  end
+  
 end

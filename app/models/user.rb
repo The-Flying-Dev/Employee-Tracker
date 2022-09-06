@@ -26,5 +26,10 @@ class User < ApplicationRecord
   validates :fname, presence: true, length: { minimum: 2 }
   validates :lname, presence: true, length: { minimum: 5 }
   validates :department, presence: true
+
+  # converting an Active Record object to a string
+  def to_s
+    "#{fname} #{lname}"
+  end
   
 end

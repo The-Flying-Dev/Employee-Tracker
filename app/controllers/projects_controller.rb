@@ -11,6 +11,7 @@ class ProjectsController < ApplicationController
 
   private 
 
+  # gem friendly_id params
   def set_project 
     @project = Project.friendly.find(params[:id])
   end

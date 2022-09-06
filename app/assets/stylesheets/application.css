@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+
+ nav canvas#logocanvas {
+	width:250px;
+	height:70px;
+	color:#fff;
+}

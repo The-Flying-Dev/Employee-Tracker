@@ -51,5 +51,9 @@ class Work < ApplicationRecord
     end
   end
 
-
+  # converting an Active Record object to a string
+  def to_s
+    "#{user}: #{datetimeperformed.strftime('%m/%d/%Y %H:%M')} - #{hours} hours"
+  end
+  
 end

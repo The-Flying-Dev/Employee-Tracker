@@ -14,4 +14,8 @@ class Department < ApplicationRecord
 
   validates :name, presence: true, length: { minimum: 5 }
 
+  # converting an Active Record object to a string
+  def to_s 
+    name
+  end
 end

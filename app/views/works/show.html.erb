@@ -1,0 +1,6 @@
+<h1>Time: <%= @work.datetimeperformed %></h1>
+<p>User's name: <%= @work.user.fname %> <%= @work.user.lname %></p>
+<p>Project name: <%= @work.project.name %></p>
+<p>Hours Worked: <%= @work.hours %></p>
+
+<%= link_to  "All Works", works_path %>

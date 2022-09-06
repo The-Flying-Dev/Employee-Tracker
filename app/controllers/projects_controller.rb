@@ -5,14 +5,14 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
-  def show     
+  def show 
   end
 
 
   private 
 
   def set_project 
-    @project = Project.find(params[:id])
+    @project = Project.friendly.find(params[:id])
   end
 
   def project_params

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_03_025002) do
+ActiveRecord::Schema.define(version: 2022_09_06_180410) do
 
   create_table "departments", force: :cascade do |t|
     t.string "name", null: false
@@ -24,7 +24,9 @@ ActiveRecord::Schema.define(version: 2022_09_03_025002) do
     t.integer "rate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
     t.index ["department_id"], name: "index_projects_on_department_id"
+    t.index ["slug"], name: "index_projects_on_slug", unique: true
   end
 
   create_table "users", force: :cascade do |t|

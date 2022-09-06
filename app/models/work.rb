@@ -35,8 +35,13 @@ class Work < ApplicationRecord
   scope :fullday, -> { where("hours >= 8") }
 
   #returns items where work was performed no less than 7 days ago
-  scope :recentwork, -> { where("datetimeperformed > '#{Time.now - 7.days}'") }
+  #scope :recentwork, -> { where("datetimeperformed > '#{Time.now - 7.days}'") }
 
+  #class method 
+  def self.recently_worked_days(numDays)
+    prevDate = Time.now - numDays.to_i.days 
+    where("datetimeperformed > '#{prevDate}'")
+  end
 
   # Custom validation
   # if a datetimeperformed item exists, make sure it's NOT greater than the current time

@@ -1,8 +1,14 @@
 class WorksController < ApplicationController
   before_action :set_work, only: [:show]
 
+  # accessing the class method from work.rb
+  # if the param is present then display the queried results otherwise display all items
   def index 
-    @works = Work.all
+    if (params[:days])
+      @works = Work.recently_worked_days(params[:days]).order('datetimeperformed desc') 
+    else  
+      @works = Work.all.order('datetimeperformed desc')
+    end
   end
 
   def show 

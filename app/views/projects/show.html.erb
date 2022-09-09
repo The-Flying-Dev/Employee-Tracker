@@ -5,4 +5,28 @@
 </ul>
 
 <br />
+
+<table>
+  <thead>
+    <tr>
+      <th>View</th>
+      <th>User</th>      
+      <th>Date/Time</th>
+      <th>Hours</th>    
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @project.works.each do |work| %>
+      <tr>
+        <td><%= link_to 'View', work %>&nbsp;</td>
+        <td><%= work.user %>&nbsp;</td>        
+        <td><%= work.datetimeperformed.strftime('%m/%d/%Y %H:%M') %>&nbsp;&nbsp;</td>
+        <td><%= work.hours %></td>        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'All Projects', projects_path %>

@@ -28,7 +28,7 @@ class Project < ApplicationRecord
   has_many :users, through: :works  # many-to-many connection with users, INNER JOIN
 
   validates :name, presence: true, length: { minimum: 5 } 
-  validates :department, presence: true
+  validates :department_id, presence: true
   validates :rate, numericality: { only_integer: true, greater_than: 100 , less_than: 15000 }
 
   #returns items where rate is less than 200

@@ -1,3 +1,19 @@
 <p><%= @department.name %></p>
 <br />
+
+<% if @department.projects.size > 0 %>
+
+  <ul>
+    <% @department.projects.each do |project| %>
+      <li><%= link_to project, project %></li>    
+      <li><%= link_to project.department.name, project.department %></li>  
+    <% end %>
+  </ul>
+
+<% else %>
+
+  <p>No projects yet</p>
+
+<% end %>
+
 <%= link_to 'Home', departments_path %>

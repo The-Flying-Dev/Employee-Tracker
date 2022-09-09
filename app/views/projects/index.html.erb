@@ -1,9 +1,12 @@
 <ul>
   <% @projects.each do |project| %>
-    <li><%= link_to project, project %></li>    
+    <li><%= link_to project, project %> <%= link_to project.department.name, project.department %></li>    
     <li><%= link_to project.department.name, project.department %></li>  
   <% end %>
 </ul>
 
 <br />
+
+
+
 <%= link_to 'Home', root_path %>

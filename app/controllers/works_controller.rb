@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  before_action :set_work, only: [:show]
+  before_action :set_work, only: [:show, :edit, :update]
 
   # accessing the class method from work.rb
   # if the param is present then display the queried results otherwise display all items
@@ -12,6 +12,34 @@ class WorksController < ApplicationController
   end
 
   def show 
+  end
+
+  def new 
+    @work = Work.new 
+  end
+
+  def edit 
+  end
+
+  def create 
+    @work = Work.new(work_params)
+    respond_to do |format|
+      if @work.save 
+        format.html { redirect_to @work, notice: 'Work Created' }
+        format.js { }
+      else 
+        format.html { render 'new' }
+        format.js { }
+      end
+    end 
+  end
+
+  def update
+    if @work.update(work_params)
+      redirect_to @work
+    else  
+      render 'edit'
+    end
   end
 
   private 

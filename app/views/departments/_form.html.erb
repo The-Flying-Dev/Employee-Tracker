@@ -1,0 +1,20 @@
+<% if @department.errors.any? %>
+	<div id="errors">
+		<p>Please correct the following <%= pluralize(@department.errors.count, "error") %>:</p>
+		<ul>
+			<% @department.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+
+<%= form_for(@department) do |f| %>
+	<div>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</div>
+	<div>
+		<%= f.submit @department.new_record? ? "Create Department" : "Update Department"  %>
+	</div>
+<% end %>

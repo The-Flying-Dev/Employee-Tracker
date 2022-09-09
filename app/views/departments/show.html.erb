@@ -1,19 +1,20 @@
-<p><%= @department.name %></p>
-<br />
+<h1><%= @department.name %></h1>
+
+<p><%= link_to 'Edit department', edit_department_path(@department) %></p>
 
 <% if @department.projects.size > 0 %>
-
-  <ul>
-    <% @department.projects.each do |project| %>
-      <li><%= link_to project, project %></li>    
-      <li><%= link_to project.department.name, project.department %></li>  
-    <% end %>
-  </ul>
-
+	<table>
+		<tbody>
+			<tr>
+				<th>Project</th>
+				<th>Department</th>
+			</tr>
+			<%= render partial: "projects/project", collection: @department.projects %>
+		</tbody>
+	</table>
 <% else %>
-
-  <p>No projects yet</p>
-
+	<p>No projects</p>
 <% end %>
+
 
 <%= link_to 'Home', departments_path %>

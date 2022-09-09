@@ -1,12 +1,15 @@
-<ul>
-  <% @projects.each do |project| %>
-    <li><%= link_to project, project %> <%= link_to project.department.name, project.department %></li>    
-    <li><%= link_to project.department.name, project.department %></li>  
-  <% end %>
-</ul>
+<h1>Projects</h1>
 
-<br />
+<p>Here are all of the projects:</p>
 
+<table>
+	<tbody>
+		<tr>
+			<th>Project</th>
+			<th>Department</th>
+		</tr>
+		<%= render partial: "project", collection: @projects %>
+	</tbody>
+</table>
 
-
-<%= link_to 'Home', root_path %>
+<p><%= link_to 'New Project', new_project_path %> | <%= link_to 'Home', root_path %> </p>

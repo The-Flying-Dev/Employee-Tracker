@@ -1,32 +1,31 @@
-<ul>  
-  <li>Project name: <%= @project.name %></li>
-  <li>Department name: <%= @project.department.name %></li>
-  <li>Rate: <%= @project.rate %></li>  
-</ul>
+<h1><%= @project.name %></h1>
 
-<br />
+<p>Department: <%= @project.department.name %>
+<p>Rate: <%= @project.rate %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>View</th>
-      <th>User</th>      
-      <th>Date/Time</th>
-      <th>Hours</th>    
-      
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @project.works.each do |work| %>
-      <tr>
-        <td><%= link_to 'View', work %>&nbsp;</td>
-        <td><%= work.user %>&nbsp;</td>        
-        <td><%= work.datetimeperformed.strftime('%m/%d/%Y %H:%M') %>&nbsp;&nbsp;</td>
-        <td><%= work.hours %></td>        
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<p><%= link_to 'Edit Project', edit_project_path(@project) %></p>
+
+<div class="remoteform">
+	<h2>Add Work</h2>
+	<%= render partial: 'works/form' %>
+</div>
+
+<% if @project.works.size > 0 %>
+	<table>
+		<tbody>
+			<tr id="headerrow">
+				<th>View</th>
+				<th>User</th>
+				<th>Project</th>
+				<th>Date/Time</th>
+				<th>Hours</th>
+			</tr>
+			<%= render partial: "works/work", collection: @project.works %>
+		</tbody>
+	</table>
+<% else %>
+	<p>No work items</p>
+<% end %>
 
 <%= link_to 'All Projects', projects_path %>

@@ -1,8 +1,13 @@
 <h1>All Departments</h1>
-<ul>
-  <% @departments.each do |department| %>
-    <li><%= link_to department, department %></li>
-  <% end %>
-</ul>
 
-<p><%= link_to 'Add Department', new_department_path %></p>
+<table>
+	<tbody>
+		<tr>
+			<th>Department</th>
+		</tr>
+		<%= render partial: "department", collection: @departments %>
+	</tbody>
+</table>
+
+<p><%= link_to 'Add Department', new_department_path %></p> 
+<p><%= link_to 'All Departments', departments_path %></p>

@@ -1,11 +1,10 @@
 # == Schema Information
 #
-# Table name: projects
+# Table name: employees
 #
 #  id            :integer          not null, primary key
-#  name          :string
-#  rate          :integer
-#  slug          :string
+#  fname         :string
+#  lname         :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  department_id :integer
@@ -13,9 +12,8 @@
 #
 # Indexes
 #
-#  index_projects_on_department_id  (department_id)
-#  index_projects_on_slug           (slug) UNIQUE
-#  index_projects_on_user_id        (user_id)
+#  index_employees_on_department_id  (department_id)
+#  index_employees_on_user_id        (user_id)
 #
 # Foreign Keys
 #
@@ -24,7 +22,7 @@
 #
 require "test_helper"
 
-class ProjectTest < ActiveSupport::TestCase
+class EmployeeTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

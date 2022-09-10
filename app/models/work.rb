@@ -4,28 +4,34 @@
 #
 #  id                :integer          not null, primary key
 #  datetimeperformed :datetime
+#  file              :string
 #  hours             :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  employee_id       :integer
 #  project_id        :integer
 #  user_id           :integer
 #
 # Indexes
 #
-#  index_works_on_project_id  (project_id)
-#  index_works_on_user_id     (user_id)
+#  index_works_on_employee_id  (employee_id)
+#  index_works_on_project_id   (project_id)
+#  index_works_on_user_id      (user_id)
 #
 # Foreign Keys
 #
-#  project_id  (project_id => projects.id)
-#  user_id     (user_id => users.id)
+#  employee_id  (employee_id => employees.id)
+#  project_id   (project_id => projects.id)
+#  user_id      (user_id => users.id)
 #
 class Work < ApplicationRecord
-
-  belongs_to :user 
+  
+  belongs_to :user
+  belongs_to :employee 
   belongs_to :project
 
   validates :project_id, presence: true 
+  validates :employee_id, presence: true 
   validates :user_id, presence: true 
   validates :datetimeperformed, presence: true
   validate :future_date
@@ -53,7 +59,7 @@ class Work < ApplicationRecord
 
   # converting an Active Record object to a string
   def to_s
-    "#{user}: #{datetimeperformed.strftime('%m/%d/%Y %H:%M')} - #{hours} hours"
+    "#{employee}: #{datetimeperformed.strftime('%m/%d/%Y %H:%M')} - #{hours} hours"
   end
   
 end

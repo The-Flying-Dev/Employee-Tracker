@@ -1,0 +1,28 @@
+<% if @employee.errors.any? %>
+	<div id="errors">
+		<p>Please correct the following <%= pluralize(@employee.errors.count, "error") %>:</p>
+		<ul>
+			<% @employee.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+
+<%= form_for(@employee) do |f| %>
+	<div>
+		<%= f.label :fname %>
+		<%= f.text_field :fname %>
+	</div>
+  <div>
+		<%= f.label :lname %>
+		<%= f.text_field :lname %>
+	</div>
+  <div>
+		<%= f.label :department_id %>
+		<%= f.collection_select(:department_id, Department.all, :id, :name, prompt: true) %>
+	</div>
+	<div>
+		<%= f.submit @employee.new_record? ? "Create Employee" : "Update Employee"  %>
+	</div>
+<% end %>

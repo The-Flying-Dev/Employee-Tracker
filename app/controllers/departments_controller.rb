@@ -1,5 +1,5 @@
 class DepartmentsController < ApplicationController
-  #before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_department, only: [:show, :edit, :update]
 
   def index 
@@ -15,14 +15,14 @@ class DepartmentsController < ApplicationController
   end
 
   def new 
-    @department = Department.new 
+    @department = current_user.departments.build 
   end
 
   def edit 
   end
 
   def create 
-    @department = Department.new(department_params)
+    @department = current_user.departments.build(department_params)
 
     if @department.save 
       redirect_to @department 

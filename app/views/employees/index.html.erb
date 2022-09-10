@@ -1,0 +1,15 @@
+<h1>Employees</h1>
+
+<p>Here are all of the employees:</p>
+
+<table>
+	<tbody>
+		<tr>
+			<th>Employee</th>
+			<th>Department</th>
+		</tr>
+		<%= render partial: "employee", collection: @employees %>
+	</tbody>
+</table>
+
+<p><%= link_to 'New Employee', new_employee_path %> | <%= link_to 'Home', root_path %> </p>

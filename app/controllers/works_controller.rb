@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  #before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_work, only: [:show, :edit, :update]
 
   # accessing the class method from work.rb
@@ -16,14 +16,23 @@ class WorksController < ApplicationController
   end
 
   def new 
-    @work = Work.new 
+    @work = current_user.works.build 
   end
 
   def edit 
   end
 
   def create 
-    @work = Work.new(work_params)
+    @work = current_user.works.build(work_params)
+    # if a file is uploaded then save
+    #if params[:file]
+    #  uploaded_file = params[:file]
+    #  File.open(Rails.root.join('public', 'uploads', uploaded_file.original_filename), 'wb') do |file|
+    #    file.write(uploaded_file.read)
+    #    @work.file = uploaded_file.original_filename #reference to work item
+    #  end
+    #end 
+
     respond_to do |format|
       if @work.save 
         format.html { redirect_to @work, notice: 'Work Created' }
@@ -43,6 +52,15 @@ class WorksController < ApplicationController
     end
   end
 
+  def upload
+    if params[:file]
+      uploaded_file = params[:file]
+      File.open(Rails.root.join('public', 'uploads', uploaded_file.original_filename), 'wb') do |file|
+        file.write(uploaded_file.read)
+      end
+    end 
+  end
+
   private 
 
   def set_work 
@@ -50,7 +68,7 @@ class WorksController < ApplicationController
   end
 
   def work_params 
-    params.require(:work).permit(:datetimeperformed, :hours, :project_id, :user_id)
+    params.require(:work).permit(:datetimeperformed, :hours, :project_id, :employee_id)
   end
 
 end

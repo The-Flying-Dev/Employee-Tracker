@@ -1,7 +1,11 @@
 <h1>Time: <%= @work.datetimeperformed %></h1>
-<p>User's name: <%= @work.user.fname %> <%= @work.user.lname %></p>
+<p>Employee's name: <%= @work.employee.fname %> <%= @work.employee.lname %></p>
 <p>Project name: <%= @work.project.name %></p>
 <p>Hours Worked: <%= @work.hours %></p>
+
+<% if @work.file %>
+  <p>File: <%= link_to @work.file, "/uploads/#{@work.file}", target: "_blank" %></p>
+<% end %>
 
 <%= link_to  "All Works", works_path %> | 
 <p><%= link_to 'Edit Work', edit_work_path(@work) %></p>

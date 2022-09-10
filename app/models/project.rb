@@ -9,6 +9,7 @@
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  department_id :integer
+#  user_id       :integer
 #
 # Indexes
 #
@@ -26,6 +27,7 @@ class Project < ApplicationRecord
   belongs_to :department
   has_many :works
   has_many :users, through: :works  # many-to-many connection with users, INNER JOIN
+  belongs_to :user
 
   validates :name, presence: true, length: { minimum: 5 } 
   validates :department_id, presence: true

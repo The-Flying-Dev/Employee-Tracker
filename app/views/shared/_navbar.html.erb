@@ -9,16 +9,34 @@
         <li class="nav-item">
           <%= link_to  "Home", root_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
-          <%= link_to  "Projects", projects_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to  "Work", works_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
+
+        <% if user_signed_in? %> 
+
+          <li class="nav-item">
+            <%= link_to "Projects", projects_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Work", works_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= current_user.email %>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled"><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link"  %></a>
+          </li>
+
+        <% else %>
+
+          <li class="nav-item">
+            <a class="nav-link disabled"><%= link_to "Login", new_user_session_path, class: "nav-link"  %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled"><%= link_to "Register", new_user_registration_path, class: "nav-link"  %></a>
+          </li>
+
+        <% end %>
       </ul>
     </div>
   </div>
 </nav>
+

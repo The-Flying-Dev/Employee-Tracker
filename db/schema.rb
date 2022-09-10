@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_10_034714) do
+ActiveRecord::Schema.define(version: 2022_09_10_045835) do
 
   create_table "departments", force: :cascade do |t|
     t.string "name", null: false
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2022_09_10_034714) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
+    t.integer "user_id"
     t.index ["department_id"], name: "index_projects_on_department_id"
     t.index ["slug"], name: "index_projects_on_slug", unique: true
   end

@@ -2,6 +2,7 @@
 
 <p>Department: <%= @project.department.name %>
 <p>Rate: <%= @project.rate %></p>
+<p>Manager: <%= @project.user %></p>
 
 
 <p><%= link_to 'Edit Project', edit_project_path(@project) %></p>

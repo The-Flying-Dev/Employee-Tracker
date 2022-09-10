@@ -38,6 +38,7 @@ class User < ApplicationRecord
   belongs_to :department
   has_many :works
   has_many :projects, through: :works  # many-to-many connection with projects, INNER JOIN
+  has_many :projects
 
   validates :fname, presence: true, length: { minimum: 2 }
   validates :lname, presence: true, length: { minimum: 5 }

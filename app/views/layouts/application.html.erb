@@ -14,7 +14,10 @@
   </head>
 
   <body id="container">
+
     <%= render './shared/navbar' %>
+
+    <% render './shared/flash' %>
 
     <section id="main">
       <article>        
@@ -24,8 +27,7 @@
         <%= yield :aside %>
       </aside>
     </section>
-    <footer>
-      <p>Tracker App</p>
-    </footer>
+    
+    <%= render './shared/footer' %>
   </body>
 </html>

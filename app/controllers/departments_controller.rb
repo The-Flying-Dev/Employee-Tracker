@@ -3,7 +3,11 @@ class DepartmentsController < ApplicationController
   before_action :set_department, only: [:show, :edit, :update]
 
   def index 
-    @departments = Department.all
+    #@departments = Department.all
+
+    # ransack query method
+    @q = Department.ransack(params[:q])
+    @departments = @q.result
   end
 
   def show

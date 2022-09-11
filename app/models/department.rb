@@ -29,4 +29,9 @@ class Department < ApplicationRecord
   def to_s 
     name
   end
+
+  # only column to search for
+  def self.ransackable_attributes(auth_object = nil)
+    ["name"]
+  end
 end

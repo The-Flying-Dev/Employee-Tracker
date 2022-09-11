@@ -3,8 +3,10 @@
 # Table name: employees
 #
 #  id            :integer          not null, primary key
+#  email         :string
 #  fname         :string
 #  lname         :string
+#  phone         :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  department_id :integer
@@ -38,5 +40,20 @@ class Employee < ApplicationRecord
     "#{fname} #{lname}"
   end
 
-  
+  # class method
+  # passes in projects collection, loops over each item and writes it as a row in the csv file
+  def self.export_csv(employees)
+    CSV.generate() do |csv|
+      csv << ['First Name','Last Name','Department','email','phone']
+      employees.each do |employee|
+        csv << [
+                 employee.fname,
+                 employee.lname,
+                 employee.department,                               
+                 employee.email,
+                 employee.phone
+               ]
+      end
+    end
+  end
 end

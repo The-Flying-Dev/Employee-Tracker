@@ -1,4 +1,6 @@
 <h1>Employees</h1>
+<br />
+<%= link_to "Download csv for current employees", employees_path(:csv) %>
 
 <p>Here are all of the employees:</p>
 
@@ -6,8 +8,9 @@
 	<tbody>
 		<tr>
 			<th>Employee</th>
-			<th>Department</th>
-			<th>Project</th>
+			<th>Department</th>	
+			<th>Email</th>
+			<th>Phone Number</th>		
 		</tr>
 		<%= render partial: "employee", collection: @employees %>
 	</tbody>

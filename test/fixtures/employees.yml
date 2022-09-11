@@ -3,8 +3,10 @@
 # Table name: employees
 #
 #  id            :integer          not null, primary key
+#  email         :string
 #  fname         :string
 #  lname         :string
+#  phone         :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  department_id :integer

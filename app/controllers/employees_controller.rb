@@ -4,6 +4,12 @@ class EmployeesController < ApplicationController
 
   def index 
     @employees = Employee.all
+
+    #feature to download csv file
+    respond_to do |format|
+      format.html 
+      format.csv { send_data Employee.export_csv(@employees), type: 'text/csv; charset=utf-8; header=present', disposition: 'attachment; filename=employees.csv' }
+    end
   end
 
   def show
@@ -11,7 +17,7 @@ class EmployeesController < ApplicationController
       format.html 
       format.xml { render xml: @employee }
       format.json { render json: @employee }
-    end
+    end    
   end
 
   def new 
@@ -46,6 +52,6 @@ class EmployeesController < ApplicationController
   end
 
   def employee_params 
-    params.require(:employee).permit(:fname, :lname, :department_id)
+    params.require(:employee).permit(:fname, :lname, :mail, :phone, :department_id)
   end
 end

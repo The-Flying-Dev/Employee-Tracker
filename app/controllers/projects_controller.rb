@@ -4,9 +4,11 @@ class ProjectsController < ApplicationController
 
   def index 
     @projects = Project.all
+    
+    #feature to download csv file
     respond_to do |format|
       format.html 
-      format.csv { send_data Project.export_csv(@projects), type: 'text/csv; charset=utf-8; header=present', disposition: 'attachment; filename=contacts.csv' }
+      format.csv { send_data Project.export_csv(@projects), type: 'text/csv; charset=utf-8; header=present', disposition: 'attachment; filename=projects.csv' }
     end
   end
 

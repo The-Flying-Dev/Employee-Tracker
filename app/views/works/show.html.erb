@@ -1,11 +1,15 @@
-<h1>Time: <%= @work.datetimeperformed %></h1>
 <p>Employee's name: <%= @work.employee.fname %> <%= @work.employee.lname %></p>
 <p>Project name: <%= @work.project.name %></p>
+<p>Date: <%= @work.datetimeperformed %></p>
 <p>Hours Worked: <%= @work.hours %></p>
 
-<% if @work.file %>
-  <p>File: <%= link_to @work.file, "/uploads/#{@work.file}", target: "_blank" %></p>
+<!--if file is present, then display a link -->
+
+<%if @work.file.present? %>
+  <p>View File: <%#= link_to @work.file, "/uploads/#{@work.file}", target: "_blank" %>  
+  <%= link_to @work.file.filename, rails_blob_path(@work.file, disposition: "attachement") %>
+  </p>
 <% end %>
 
-<%= link_to  "All Works", works_path %> | 
-<p><%= link_to 'Edit Work', edit_work_path(@work) %></p>
+<p><%= link_to  "All Works", works_path %> | 
+<%= link_to 'Edit Work', edit_work_path(@work) %></p>

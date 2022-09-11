@@ -4,4 +4,9 @@
 	<td><%= link_to work.project, work.project %></td>
 	<td><%= work.datetimeperformed.strftime('%m/%d/%Y %H:%M') %></td>
 	<td><%= work.hours %></td>
+	<td>
+		<% if work.file.present? %>		
+			<%= link_to work.file.filename, rails_blob_path(work.file, disposition: "attachement") %>
+		<% end %>	
+	</td>
 </tr>

@@ -10,7 +10,7 @@
 <% end %>
 
 <%# doajax = false unless (defined? doajax) %>
-<%= form_with model:@work do |f| %>
+<%= form_with model:@work, multipart: true do |f| %>
 	<div>
 		<%= f.label :project_id %>
 		<%= f.collection_select(:project_id, Project.all, :id, :name, prompt: true) %>
@@ -29,8 +29,8 @@
 	</div>
 	<div>
 		<div>
-			<%= label_tag :file, 'Notes (optional)' %>
-			<%= file_field_tag :file %>
+			<%= f.label :file, 'Notes (optional)' %>
+			<%= f.file_field :file %>
 		</div>
 	</div>
 	<div>

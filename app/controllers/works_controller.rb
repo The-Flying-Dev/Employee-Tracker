@@ -24,15 +24,6 @@ class WorksController < ApplicationController
 
   def create 
     @work = current_user.works.build(work_params)
-    # if a file is uploaded then save
-    #if params[:file]
-    #  uploaded_file = params[:file]
-    #  File.open(Rails.root.join('public', 'uploads', uploaded_file.original_filename), 'wb') do |file|
-    #    file.write(uploaded_file.read)
-    #    @work.file = uploaded_file.original_filename #reference to work item
-    #  end
-    #end 
-
     respond_to do |format|
       if @work.save 
         format.html { redirect_to @work, notice: 'Work Created' }
@@ -52,14 +43,14 @@ class WorksController < ApplicationController
     end
   end
 
-  def upload
-    if params[:file]
-      uploaded_file = params[:file]
-      File.open(Rails.root.join('public', 'uploads', uploaded_file.original_filename), 'wb') do |file|
-        file.write(uploaded_file.read)
-      end
-    end 
-  end
+  #def upload
+  #  if params[:file]
+  #    uploaded_file = params[:file]
+  #    File.open(Rails.root.join('public', 'uploads', uploaded_file.original_filename), 'wb') do |file|
+  #      file.write(uploaded_file.read)
+  #    end
+  #  end 
+  #end
 
   private 
 
@@ -68,7 +59,7 @@ class WorksController < ApplicationController
   end
 
   def work_params 
-    params.require(:work).permit(:datetimeperformed, :hours, :project_id, :employee_id)
+    params.require(:work).permit(:datetimeperformed, :hours, :project_id, :employee_id, :file)
   end
 
 end

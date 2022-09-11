@@ -37,4 +37,6 @@ class Employee < ApplicationRecord
   def to_s
     "#{fname} #{lname}"
   end
+
+  
 end

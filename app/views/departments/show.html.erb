@@ -9,12 +9,15 @@
 				<th>Project</th>
 				<th>Department</th>
 			</tr>
-			<%= render partial: "projects/project", collection: @department.projects %>
+			<%= render partial: "projects/project", collection: @department.projects %>					
 		</tbody>
 	</table>
+	<br />	
+	<p>Employees in this department</p>
+	<%= render partial: "employees/employee", collection: @department.employees %>
 <% else %>
 	<p>No projects</p>
 <% end %>
 
-
+<br />
 <%= link_to 'Home', root_path %>

@@ -2,19 +2,21 @@
 
 <p><%= link_to 'Edit employee', edit_employee_path(@employee) %></p>
 
-<%# if @employee.size > 0 %>
-	<table>
-		<tbody>
-			<tr>
-				<th>Employee</th>
-				<th>Works</th>
-			</tr>
-			<%= render partial: "works/work", collection: @employee.projects %>
-		</tbody>
-	</table>
-<%# else %>
-	<p>No Employees</p>
-<%# end %>
+
+<table>
+	<tbody>
+		<tr>
+			<th>View</th>
+			<th>Employee</th>
+			<th>Works</th>
+			<th>Date performed</th>
+			<th>Hours</th>
+			<th>File</th>
+		</tr>
+		<%= render partial: "works/work", collection: @employee.works %>
+	</tbody>
+</table>
+
 
 
 <%= link_to 'Home', root_path %>

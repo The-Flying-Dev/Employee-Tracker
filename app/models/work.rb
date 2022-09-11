@@ -25,6 +25,7 @@
 #  user_id      (user_id => users.id)
 #
 class Work < ApplicationRecord
+  has_one_attached :file 
   
   belongs_to :user
   belongs_to :employee 

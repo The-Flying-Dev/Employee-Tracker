@@ -44,5 +44,23 @@ class Project < ApplicationRecord
   def to_s 
     "#{name} (#{department})"
   end
+
+  # class method
+  # passes in projects collection, loops over each item and writes it as a row in the csv file
+  def self.export_csv(projects)
+    CSV.generate() do |csv|
+      csv << ['Name','Department','Rate','Created at','User','Recently Logged Work']
+      projects.each do |project|
+        csv << [
+                 project.name,
+                 project.department,
+                 project.rate,
+                 project.created_at,
+                 project.user.email,
+                 project.works.order('created_at DESC').first
+               ]
+      end
+    end
+  end
   
 end

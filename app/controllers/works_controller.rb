@@ -8,7 +8,7 @@ class WorksController < ApplicationController
     if (params[:days])
       @works = Work.recently_worked_days(params[:days]).order('datetimeperformed desc') 
     else  
-      @works = Work.all.order('datetimeperformed desc')
+      @pagy, @works = pagy(Work.all.order('datetimeperformed desc'),items: 5)
     end
   end
 
@@ -43,14 +43,6 @@ class WorksController < ApplicationController
     end
   end
 
-  #def upload
-  #  if params[:file]
-  #    uploaded_file = params[:file]
-  #    File.open(Rails.root.join('public', 'uploads', uploaded_file.original_filename), 'wb') do |file|
-  #      file.write(uploaded_file.read)
-  #    end
-  #  end 
-  #end
 
   private 
 

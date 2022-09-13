@@ -17,21 +17,20 @@
 #  user_id  (user_id => users.id)
 #
 class Department < ApplicationRecord
-
   belongs_to :user
   has_many :employees
   has_many :projects
 
   validates :name, presence: true, length: { minimum: 5 }
-  validates :user_id, presence: true 
+  validates :user_id, presence: true
 
   # converting an Active Record object to a string
-  def to_s 
+  def to_s
     name
   end
 
   # only column to search for
-  def self.ransackable_attributes(auth_object = nil)
-    ["name"]
+  def self.ransackable_attributes(_auth_object = nil)
+    ['name']
   end
 end

@@ -1,9 +1,9 @@
 class DepartmentsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_department, only: [:show, :edit, :update]
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :set_department, only: %i[show edit update]
 
-  def index 
-    #@departments = Department.all
+  def index
+    # @departments = Department.all
 
     # ransack query method
     @q = Department.ransack(params[:q])
@@ -12,45 +12,43 @@ class DepartmentsController < ApplicationController
 
   def show
     respond_to do |format|
-      format.html 
+      format.html
       format.xml { render xml: @department }
       format.json { render json: @department }
     end
   end
 
-  def new 
-    @department = current_user.departments.build 
+  def new
+    @department = current_user.departments.build
   end
 
-  def edit 
-  end
+  def edit; end
 
-  def create 
+  def create
     @department = current_user.departments.build(department_params)
 
-    if @department.save 
-      redirect_to @department 
-    else 
+    if @department.save
+      redirect_to @department
+    else
       render 'new'
-    end     
+    end
   end
 
-  def update 
-    if @department.update(department_params) 
+  def update
+    if @department.update(department_params)
       redirect_to @department
-    else  
+    else
       render 'edit'
     end
   end
 
-  private 
-  
-  def set_department 
+  private
+
+  def set_department
     @department = Department.find(params[:id])
   end
 
-  def department_params 
+  def department_params
     params.require(:department).permit(:name)
   end
-
 end

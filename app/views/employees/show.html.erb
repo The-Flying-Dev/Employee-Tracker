@@ -1,4 +1,8 @@
-<h1><%= @employee %></h1>
+<h1>Name: <%= @employee %></h1>
+<p>Department: <%= @employee.department %></p>
+<p>Email: <%= @employee.email %></p>
+<p>Phone Number: <%= @employee.phone %></p>
+
 
 <p><%= link_to 'Edit employee', edit_employee_path(@employee) %></p>
 

@@ -25,35 +25,35 @@
 #  user_id      (user_id => users.id)
 #
 class Work < ApplicationRecord
-  has_one_attached :file 
-  
+  has_one_attached :file
+
   belongs_to :user
-  belongs_to :employee 
+  belongs_to :employee
   belongs_to :project
 
-  validates :project_id, presence: true 
-  validates :employee_id, presence: true 
-  validates :user_id, presence: true 
+  validates :project_id, presence: true
+  validates :employee_id, presence: true
+  validates :user_id, presence: true
   validates :datetimeperformed, presence: true
   validate :future_date
   validates :hours, numericality: { only_integer: true, greater_than: 0, less_than_or_equal_to: 8 }
 
-  #returns items greater than or equl to 8
-  scope :fullday, -> { where("hours >= 8") }
+  # returns items greater than or equl to 8
+  scope :fullday, -> { where('hours >= 8') }
 
-  #returns items where work was performed no less than 7 days ago
-  #scope :recentwork, -> { where("datetimeperformed > '#{Time.now - 7.days}'") }
+  # returns items where work was performed no less than 7 days ago
+  # scope :recentwork, -> { where("datetimeperformed > '#{Time.now - 7.days}'") }
 
-  #class method 
+  # class method
   def self.recently_worked_days(numDays)
-    prevDate = Time.now - numDays.to_i.days 
+    prevDate = Time.now - numDays.to_i.days
     where("datetimeperformed > '#{prevDate}'")
   end
 
   # Custom validation
   # if a datetimeperformed item exists, make sure it's NOT greater than the current time
-  def future_date 
-    if datetimeperformed.present? && datetimeperformed > Time.now 
+  def future_date
+    if datetimeperformed.present? && datetimeperformed > Time.now
       errors.add(:datetimeperformed, "can't be a future date")
     end
   end
@@ -62,5 +62,4 @@ class Work < ApplicationRecord
   def to_s
     "#{employee}: #{datetimeperformed.strftime('%m/%d/%Y %H:%M')} - #{hours} hours"
   end
-  
 end

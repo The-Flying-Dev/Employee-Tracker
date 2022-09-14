@@ -18,7 +18,9 @@
 	</tbody>
 </table>
 
-<p><%= link_to 'Edit employee', edit_employee_path(@employee), class:"btn btn-light btn-sm"  %></p>
+<div class="page-links">
+	<%= link_to 'Edit employee', edit_employee_path(@employee), class:"btn btn-light btn-sm"  %>
+</div>
 
 
 <table class="table table-striped">
@@ -31,11 +33,12 @@
 			<th>File</th>		
 			<th>View</th>	
 		</tr>
-		<tr><%= @employee %>'s work record</tr>
+		<tr><h1><%= @employee %>'s work record</h1></tr>
 		<%= render partial: "works/work", collection: @employee.works %>
 	</tbody>
 </table>
 
-
-<%= link_to "Employees", employees_path, class: "btn btn-secondary btn-sm" %> | 
-<%= link_to 'Home', root_path, class: "btn btn-success btn-sm" %>
+<div class="page-links">
+	<%= link_to "Employees", employees_path, class: "btn btn-secondary btn-sm" %> | 
+	<%= link_to 'Home', root_path, class: "btn btn-success btn-sm" %>
+</div>

@@ -10,17 +10,19 @@
 <% end %>
 
 <%= form_for(@department) do |f| %>
-	<div>
-		<%= f.label :name %>
-		<%= f.text_field :name %>
+	<div class="form">
+		<%#= f.label :name %>
+		<%= f.text_field :name, placeholder: "Enter Name", class:"form-control form-control-md", id:"formInput" %>
 	</div>
-	<div>
-		<%= f.label :notes %>
-		<%= f.text_field :notes %>
+	<div class="form">
+		<%#= f.label :notes %>
+		<%= f.text_field :notes, placeholder: "Enter Notes", class:"form-control form-control-md", id:"formInput" %>
 	</div>
-	<div>
-		<%= f.submit @department.new_record? ? "Create Department" : "Update Department"  %>
+	<div  class="form">
+		<%= f.submit @department.new_record? ? "Create Department" : "Update Department", class:"btn btn-dark", id:"button"  %>
 	</div>
 <% end %>
 
-<%= link_to 'Back', :back, class: "btn btn-success btn-sm" %> 
+<div class="page-links">
+	<%= link_to 'Back', :back, class: "btn btn-success btn-sm" %> 
+</div>

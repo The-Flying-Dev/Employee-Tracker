@@ -9,21 +9,25 @@
 			</ul>
 		</div>
 	<% end %>
-	<div>
-		<%= f.label :name %>
-		<%= f.text_field :name %>
+	<div class="form">
+		<%#= f.label :name %>
+		<%= f.text_field :name, placeholder: "Enter Name", class:"form-control form-control-md", id:"formInput" %>
 	</div>	
-	<div>
-		<%= f.label :rate %>
-		<%= f.text_field :rate %>
+	<div class="form">
+		<%#= f.label :rate %>
+		<%= f.text_field :rate, placeholder: "Enter The Current Hourly Rate", class:"form-control form-control-md", id:"formInput" %>
 	</div>
-	<div>
-		<%= f.label :department_id %>
+	<div class="form">
+		<%= f.label :department_id, class:"label" %>
+	</div>
+	<div class="form">
 		<%= f.collection_select(:department_id, Department.all, :id, :name, prompt: true) %>
 	</div>
-	<div>
-		<%= f.submit @project.new_record? ? "Create Project" : "Update Project"  %>
+	<div class="form">
+		<%= f.submit @project.new_record? ? "Create Project" : "Update Project",class:"btn btn-dark", id:"button"  %>
 	</div>
 <% end %>
 
-<%= link_to 'Back', :back, class: "btn btn-success btn-sm" %> 
+<div class="page-links">
+	<%= link_to 'Back', :back, class: "btn btn-success btn-sm" %> 
+</div>

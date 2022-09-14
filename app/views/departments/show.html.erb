@@ -12,8 +12,9 @@
 	</table>
 	<br />
 
-<p><%= link_to 'Edit department', edit_department_path(@department), class:"btn btn-light btn-sm" %></p>
-<br />
+<div class="page-links">
+	<%= link_to 'Edit department', edit_department_path(@department), class:"btn btn-light btn-sm" %>
+</div>
 
 	<p>Employees in this department</p>
 	<table class="table table-striped">
@@ -29,9 +30,11 @@
 	</tbody>
 </table>	
 <% else %>
-	<p>No projects</p>
+	<h3>No Projects Yet</h3>
 <% end %>
 
 <br />
-<%= link_to  "All Works", works_path, class: "btn btn-secondary btn-sm"  %> | 
-<%= link_to 'Home', root_path, class: "btn btn-success btn-sm" %>
+<div class="page-links">
+	<%= link_to  "All Works", works_path, class: "btn btn-secondary btn-sm"  %> | 
+	<%= link_to 'Home', root_path, class: "btn btn-success btn-sm" %>
+</div>

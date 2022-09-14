@@ -1,29 +1,33 @@
-<table class="table table-dark table-striped">
+<table id="work-info" class="table table-dark table-striped">
 	<tbody>
 		<tr>
-			<th>Employee's Name</th>
+			<th>Employee's Name:</th>
 			<td><%= @work.employee.fname %> <%= @work.employee.lname %></td>
 		</tr>
 		<tr>
-			<th>Project's Name</th>
+			<th>Project's Name:</th>
 			<td><%= @work.project.name %></td>
 		</tr>
 		<tr>
-			<th>Date Performed</th>
+			<th>Date Performed:</th>
 			<td><%= @work.datetimeperformed %></td>	
 		</tr>
-			<th>Hours Worked For This Project</th>	
+		<tr>
+			<th>Hours Worked For This Project:</th>	
 			<td><%= @work.hours %></td>					
-		</tr>		
+		</tr>	
+		<tr>
+			<th>File:</th>	<!--if file is present, then display a link -->		
+			<td>
+				<%if @work.file.present? %>  
+  				<%= link_to @work.file.filename, rails_blob_path(@work.file, disposition: "attachement"), class:"btn btn-danger btn-sm" %>
+				<% end %>
+			</td>					
+		</tr>	
 	</tbody>
 </table>
-<!--if file is present, then display a link -->
 
-<%if @work.file.present? %>
-  <p>View File: <%#= link_to @work.file, "/uploads/#{@work.file}", target: "_blank" %>  
-  <%= link_to @work.file.filename, rails_blob_path(@work.file, disposition: "attachement") %>
-  </p>
-<% end %>
-
-<%= link_to  "All Works", works_path, class: "btn btn-secondary btn-sm"  %> | 
-<%= link_to 'Edit Work', edit_work_path(@work), class:"btn btn-light btn-sm"  %>
+<div class="page-links">
+	<%= link_to  "All Works", works_path, class: "btn btn-secondary btn-sm"  %> | 
+	<%= link_to 'Edit Work', edit_work_path(@work), class:"btn btn-light btn-sm"  %>
+</div>

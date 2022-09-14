@@ -1,7 +1,5 @@
 <h1><%= @department.name %></h1>
 
-<p><%= link_to 'Edit department', edit_department_path(@department) %></p>
-
 <% if @department.projects.size > 0 %>
 	<table>
 		<tbody>
@@ -12,9 +10,24 @@
 			<%= render partial: "projects/project", collection: @department.projects %>					
 		</tbody>
 	</table>
-	<br />	
+	<br />
+
+<p><%= link_to 'Edit department', edit_department_path(@department) %></p>
+<br />
+
 	<p>Employees in this department</p>
-	<%= render partial: "employees/employee", collection: @department.employees %>
+	<table>
+	<tbody>
+		<tr>
+			<th>Employee</th>
+			<th>Department</th>	
+			<th>Email</th>
+			<th>Phone Number</th>	
+			<th></th>	
+		</tr>
+		<%= render partial: "employees/employee", collection: @department.employees %>
+	</tbody>
+</table>	
 <% else %>
 	<p>No projects</p>
 <% end %>

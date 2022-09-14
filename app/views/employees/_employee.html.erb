@@ -1,6 +1,7 @@
 <tr>
-	<td><%= link_to employee, employee %></td>
-	<td><%= link_to employee.department.name, employee.department %></td>		
+	<td><%= employee %></td>
+	<td><%= link_to employee.department.name.capitalize() , employee.department %></td>		
 	<td><%= employee.email %></td>	
 	<td><%= employee.phone %></td>	
+	<td><%= link_to 'View', employee %></td>
 </tr>

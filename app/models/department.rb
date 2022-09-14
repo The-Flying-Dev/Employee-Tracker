@@ -4,6 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  name       :string           not null
+#  notes      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :integer
@@ -26,7 +27,7 @@ class Department < ApplicationRecord
 
   # converting an Active Record object to a string
   def to_s
-    name
+    name.capitalize()
   end
 
   # only column to search for

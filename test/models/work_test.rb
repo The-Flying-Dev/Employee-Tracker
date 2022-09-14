@@ -23,11 +23,23 @@
 #  employee_id  (employee_id => employees.id)
 #  project_id   (project_id => projects.id)
 #  user_id      (user_id => users.id)
-#
+# 
 require 'test_helper'
 
 class WorkTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
+
+  context 'validations' do 
+    should validate_presence_of(:project_id)    
+    should validate_presence_of(:employee_id)
+    should validate_presence_of(:user_id)
+    should validate_presence_of(:datetimeperformed) 
+    should validate_numericality_of(:hours).only_integer.is_greater_than(0).is_less_than_or_equal_to(8)
+    should belong_to(:user), foreign_key: 'user_id'
+    should belong_to(:employee), foreign_key: 'employee_id'   
+    should belong_to(:project), foreign_key: 'project_id' 
+  end
+
 end

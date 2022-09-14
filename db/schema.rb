@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_14_032659) do
+ActiveRecord::Schema.define(version: 2022_09_14_184159) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -42,10 +42,10 @@ ActiveRecord::Schema.define(version: 2022_09_14_032659) do
 
   create_table "departments", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "notes"
+    t.integer "user_id"
     t.index ["user_id"], name: "index_departments_on_user_id"
   end
 
@@ -88,7 +88,6 @@ ActiveRecord::Schema.define(version: 2022_09_14_032659) do
   end
 
   create_table "works", force: :cascade do |t|
-    t.integer "employee_id"
     t.integer "project_id"
     t.integer "user_id"
     t.datetime "datetimeperformed"
@@ -96,6 +95,7 @@ ActiveRecord::Schema.define(version: 2022_09_14_032659) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "file"
+    t.integer "employee_id"
     t.index ["employee_id"], name: "index_works_on_employee_id"
     t.index ["project_id"], name: "index_works_on_project_id"
     t.index ["user_id"], name: "index_works_on_user_id"

@@ -1,27 +1,41 @@
-<h1>Name: <%= @employee %></h1>
-<p>Department: <%= @employee.department %></p>
-<p>Email: <%= @employee.email %></p>
-<p>Phone Number: <%= @employee.phone %></p>
-
-
-<p><%= link_to 'Edit employee', edit_employee_path(@employee) %></p>
-
-
-<table>
+<table class="table table-dark table-striped">
 	<tbody>
 		<tr>
-			<th>View</th>
+			<th>Name</th>
+			<td><%= @employee %></td>
+		</tr>
+		<tr>
+			<th>Department</th>
+			<td><%= @employee.department %></td>
+		</tr>
+		<tr>
+			<th>Email</th>
+			<td><%= @employee.email %></td>	
+		</tr>
+			<th>Phone Number</th>	
+			<td><%= @employee.phone %></td>					
+		</tr>		
+	</tbody>
+</table>
+
+<p><%= link_to 'Edit employee', edit_employee_path(@employee), class:"btn btn-light btn-sm"  %></p>
+
+
+<table class="table table-striped">
+	<tbody>
+		<tr>			
 			<th>Employee</th>
 			<th>Works</th>
 			<th>Date performed</th>
 			<th>Hours</th>
-			<th>File</th>			
+			<th>File</th>		
+			<th>View</th>	
 		</tr>
-		<tr>View this employee's work record</tr>
+		<tr><%= @employee %>'s work record</tr>
 		<%= render partial: "works/work", collection: @employee.works %>
 	</tbody>
 </table>
 
 
-
-<%= link_to 'Home', root_path %>
+<%= link_to "Employees", employees_path, class: "btn btn-secondary btn-sm" %> | 
+<%= link_to 'Home', root_path, class: "btn btn-success btn-sm" %>

@@ -1,7 +1,7 @@
 <tr>
 	<td><%= employee %></td>
-	<td><%= link_to employee.department.name.capitalize() , employee.department %></td>		
+	<td><%= link_to employee.department.name.capitalize() , employee.department, class: "btn btn-outline-dark btn-sm"  %></td>		
 	<td><%= employee.email %></td>	
 	<td><%= employee.phone %></td>	
-	<td><%= link_to 'View', employee %></td>
+	<td><%= link_to 'View', employee, class: "btn btn-warning btn-sm" %></td>
 </tr>

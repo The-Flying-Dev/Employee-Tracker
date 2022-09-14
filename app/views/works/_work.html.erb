@@ -1,14 +1,14 @@
-<tr>
-	<td><%= link_to 'View', work %></td>
+<tr>	
 	<td><%= work.employee %></td>
-	<td><%= link_to work.project, work.project %></td>
+	<td><%= link_to work.project, work.project, class:"btn btn-info btn-sm" %></td>
 	<td><%= work.datetimeperformed.strftime('%m/%d/%Y %H:%M') %></td>
-	<td><%= work.hours %></td>
+	<td><%= work.hours %></td>	
 	<td>
 		<% if work.file.present? %>		
-			<%= link_to work.file.filename, rails_blob_path(work.file, disposition: "attachement") %>
+			<%= link_to work.file.filename, rails_blob_path(work.file, disposition: "attachement"), class:"btn btn-danger btn-sm" %>
 		<% end %>	
 	</td>	
+	<td><%= link_to 'View', work, class: "btn btn-warning btn-sm"%></td>
 </tr>
 
 <%#= pagy_nav_bootstrap(@pagy).html_safe %>

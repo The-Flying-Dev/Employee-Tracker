@@ -1,10 +1,10 @@
 <h1>Employees</h1>
 <br />
-<%= link_to "Download csv for current employees", employees_path(:csv) %>
+<%= link_to "Download csv for current employees", employees_path(:csv), class:"btn btn-danger btn-sm" %>
 
 <p>Here are all of the employees:</p>
 
-<table>
+<table class="table table-striped">
 	<tbody>
 		<tr>
 			<th>Employee</th>
@@ -17,4 +17,7 @@
 	</tbody>
 </table>
 
-<p><%= link_to 'New Employee', new_employee_path %> | <%= link_to 'Home', root_path %> </p>
+<p>
+	<%= link_to 'New Employee', new_employee_path, class: "btn btn-secondary btn-sm" %> | 
+	<%= link_to 'Home', root_path, class: "btn btn-success btn-sm" %> 
+</p>

@@ -1,8 +1,22 @@
-<p>Employee's name: <%= @work.employee.fname %> <%= @work.employee.lname %></p>
-<p>Project's name: <%= @work.project.name %></p>
-<p>Date Performed: <%= @work.datetimeperformed %></p>
-<p>Hours worked for this project: <%= @work.hours %></p>
-
+<table class="table table-dark table-striped">
+	<tbody>
+		<tr>
+			<th>Employee's Name</th>
+			<td><%= @work.employee.fname %> <%= @work.employee.lname %></td>
+		</tr>
+		<tr>
+			<th>Project's Name</th>
+			<td><%= @work.project.name %></td>
+		</tr>
+		<tr>
+			<th>Date Performed</th>
+			<td><%= @work.datetimeperformed %></td>	
+		</tr>
+			<th>Hours Worked For This Project</th>	
+			<td><%= @work.hours %></td>					
+		</tr>		
+	</tbody>
+</table>
 <!--if file is present, then display a link -->
 
 <%if @work.file.present? %>
@@ -11,5 +25,5 @@
   </p>
 <% end %>
 
-<p><%= link_to  "All Works", works_path %> | 
-<%= link_to 'Edit Work', edit_work_path(@work) %></p>
+<%= link_to  "All Works", works_path, class: "btn btn-secondary btn-sm"  %> | 
+<%= link_to 'Edit Work', edit_work_path(@work), class:"btn btn-light btn-sm"  %>

@@ -7,7 +7,7 @@
   <%= f.submit name: '' %><br />
 <% end %>
 
-<table>
+<table class="table table-striped">
 	<tbody>
 		<tr>
 			<th>Department</th>
@@ -19,5 +19,6 @@
 
 
 
-<p><%= link_to 'Add Department', new_department_path %></p> 
-<p><%= link_to 'All Departments', departments_path %></p>
+
+<%= link_to 'Add Department', new_department_path, class: "btn btn-secondary btn-sm" %> | 
+<%= link_to 'Back', :back, class: "btn btn-success btn-sm" %> 

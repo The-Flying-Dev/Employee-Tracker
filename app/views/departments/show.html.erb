@@ -1,7 +1,7 @@
 <h1><%= @department.name %></h1>
 
 <% if @department.projects.size > 0 %>
-	<table>
+	<table class="table table-striped">
 		<tbody>
 			<tr>
 				<th>Project</th>
@@ -12,11 +12,11 @@
 	</table>
 	<br />
 
-<p><%= link_to 'Edit department', edit_department_path(@department) %></p>
+<p><%= link_to 'Edit department', edit_department_path(@department), class:"btn btn-light btn-sm" %></p>
 <br />
 
 	<p>Employees in this department</p>
-	<table>
+	<table class="table table-striped">
 	<tbody>
 		<tr>
 			<th>Employee</th>
@@ -33,4 +33,5 @@
 <% end %>
 
 <br />
-<%= link_to 'Home', root_path %>
+<%= link_to  "All Works", works_path, class: "btn btn-secondary btn-sm"  %> | 
+<%= link_to 'Home', root_path, class: "btn btn-success btn-sm" %>

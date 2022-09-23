@@ -1,6 +1,6 @@
 <tr>	
-	<td><%= work.employee %></td>
-	<td><%= link_to work.project, work.project, class:"btn btn-info btn-sm" %></td>
+	<td><%= work.employee.to_s.titleize %></td>
+	<td><%= link_to work.project.to_s.titleize, work.project, class:"btn btn-info btn-sm" %></td>
 	<td><%= work.datetimeperformed.strftime('%m/%d/%Y %H:%M') %></td>
 	<td><%= work.hours %></td>	
 	<td>

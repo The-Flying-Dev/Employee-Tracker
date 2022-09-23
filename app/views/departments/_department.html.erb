@@ -1,4 +1,4 @@
 <tr>
-	<td><%= link_to department, department, class: "btn btn-outline-dark btn-sm" %></td>
-	<td><%=  department.notes  %></td>
+	<td><%= link_to department.to_s.titleize, department, class: "btn btn-outline-dark btn-sm" %></td>
+	<td><%=  department.notes  %></td>	
 </tr>

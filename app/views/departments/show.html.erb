@@ -1,4 +1,4 @@
-<h1><%= @department.name %></h1>
+<h1><%= @department.name.titleize %></h1>
 
 <% if @department.projects.size > 0 %>
 	<table class="table table-striped">
@@ -13,7 +13,7 @@
 	<br />
 
 <div class="page-links">
-	<%= link_to 'Edit department', edit_department_path(@department), class:"btn btn-light btn-sm" %>
+	<%= link_to 'Edit department', edit_department_path(@department), class:"btn btn-light btn-sm" %> 	
 </div>
 
 	<h3>Employees in this department</h3>

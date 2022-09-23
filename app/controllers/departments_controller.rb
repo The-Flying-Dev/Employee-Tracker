@@ -1,6 +1,6 @@
 class DepartmentsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
-  before_action :set_department, only: %i[show edit update]
+  before_action :set_department, only: %i[show edit update destroy]
 
   def index
     # @departments = Department.all
@@ -41,6 +41,7 @@ class DepartmentsController < ApplicationController
       render 'edit'
     end
   end
+
 
   private
 
